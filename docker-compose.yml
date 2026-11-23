@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  blackfriday-capture:
+    build: .
+    container_name: blackfriday-capture
+    ports:
+      - "8501:8501"
+    environment:
+      - CLOUDINARY_CLOUD_NAME=${CLOUDINARY_CLOUD_NAME:-}
+      - CLOUDINARY_API_KEY=${CLOUDINARY_API_KEY:-}
+      - CLOUDINARY_API_SECRET=${CLOUDINARY_API_SECRET:-}
+      - AIRTABLE_API_KEY=${AIRTABLE_API_KEY:-}
+      - AIRTABLE_BASE_ID=${AIRTABLE_BASE_ID:-}
+      - AIRTABLE_TABLE_NAME=${AIRTABLE_TABLE_NAME:-BlackFriday}
+    volumes:
+      - ./captures:/app/captures
+      - ./streamlit_config:/app/.streamlit
+    restart: unless-stopped
