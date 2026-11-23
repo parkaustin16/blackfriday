@@ -256,8 +256,35 @@ def build_url_candidates(subsidiary_code: str) -> list[str]:
     """Build likely URL variants for Black Friday pages."""
     # Per-subsidiary overrides (used as the first/only candidate)
     _overrides: dict[str, str] = {
-        "co": "https://www.lg.com/co/black-friday/",
-        "fr": "https://www.lg.com/fr/promotions/black-friday/",
+        "at": "https://www.lg.com/at/promotions/preblackfriday",
+        "au": "https://www.lg.com/au/black-friday/sale",
+        "be": "https://www.lg.com/be/promoties/Black-Friday",
+        "be_fr": "https://www.lg.com/be_fr/promotions/Black-Friday",
+        "br": "https://www.lg.com/br/blackfriday-lg",
+        "ca_en": "https://www.lg.com/ca_en/shop/all-promotions/black-friday-lg-gram-pro-free-portable-monitor-20261119",
+        "cl": "https://www.lg.com/cl/blackfriday",
+        "co": "https://www.lg.com/co/todas-las-promociones/pre-black-friday-tv-audio",
+        "cz": "https://www.lg.com/cz/promotions/black-friday",
+        "de": "https://www.lg.com/de/promotions/blackweek",
+        "fr": "https://www.lg.com/fr/promotions/black-friday",
+        "hk": "https://www.lg.com/hk/promotions/black-friday-offer",
+        "hk_en": "https://www.lg.com/hk_en/promotions/black-friday-offer",
+        "hu": "https://www.lg.com/hu/black-friday",
+        "it": "https://www.lg.com/it/offerte-black-friday",
+        "kz": "https://www.lg.com/kz/lg-black-friday",
+        "nl": "https://www.lg.com/nl/promoties/black-friday-hand-raiser",
+        "pa": "https://www.lg.com/pa/blackfriday",
+        "ph": "https://www.lg.com/ph/promotions/black-friday-sale",
+        "pl": "https://www.lg.com/pl/promocje/pre-black-friday",
+        "pt": "https://www.lg.com/pt/campanha-black-friday",
+        "sa": "https://www.lg.com/sa/promotions/white-friday/white-friday-deals",
+        "sa_en": "https://www.lg.com/sa_en/promotions/white-friday/white-friday-deals",
+        "se": "https://www.lg.com/se/kampanjer/black-weeks",
+        "sg": "https://www.lg.com/sg/promotions/nov-hs-black-friday-promotion",
+        "uk": "https://www.lg.com/uk/promotion/blackfriday-2026",
+        "us": "https://www.lg.com/us/promotions/black-friday-deals",
+        "vn": "https://www.lg.com/vn/khuyen-mai/black-friday-lg",
+        "za": "https://www.lg.com/za/promotions/black-friday-all-categories",
     }
     if subsidiary_code in _overrides:
         return [_overrides[subsidiary_code]]
