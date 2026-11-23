@@ -264,6 +264,7 @@ def build_url_candidates(subsidiary_code: str) -> list[str]:
 
     # Try common Black Friday URL patterns
     candidates = [
+        f"https://www.lg.com/{subsidiary_code}/promotions/blackfriday/",
         f"https://www.lg.com/{subsidiary_code}/black-friday/",
         f"https://www.lg.com/{subsidiary_code}/bf/",
         f"https://www.lg.com/{subsidiary_code}/blackfriday/",
@@ -272,6 +273,7 @@ def build_url_candidates(subsidiary_code: str) -> list[str]:
     if "_" in subsidiary_code:
         base_code = subsidiary_code.split('_')[0]
         candidates.extend([
+            f"https://www.lg.com/{subsidiary_code.replace('_', '-')}/promotions/blackfriday/",
             f"https://www.lg.com/{subsidiary_code.replace('_', '-')}/black-friday/",
             f"https://www.lg.com/{base_code}/black-friday/",
         ])
