@@ -388,7 +388,7 @@ def save_to_airtable(
 
     country_name = country_label.split(" (")[0]
     mode_suffix = "pc" if mode == "desktop" else "mo"
-    banner_type = f"black-friday-{mode_suffix}"
+    banner_type = f"main-blackfriday-{mode_suffix}"
     period = datetime.now().strftime("%m/%d/%Y")
     record_name = f"{subsidiary_code}-black-friday-{mode_suffix}"
 

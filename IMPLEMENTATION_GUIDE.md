@@ -112,7 +112,7 @@ The app expects an Airtable table with these columns:
 - **domain** (Text): Subsidiary code
 - **country** (Text): Country name
 - **period** (Date): Capture date
-- **banner-type** (Text): Type of capture (e.g., "black-friday-pc")
+- **banner-type** (Text): Type of capture (e.g., "main-blackfriday-pc")
 - **capture** (Attachment): Link to screenshot URL
 
 ## Usage
