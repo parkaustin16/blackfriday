@@ -93,16 +93,16 @@ The app reads configuration from either:
 
 **Optional Cloudinary Configuration**:
 ```toml
-CLOUDINARY_CLOUD_NAME = "your-cloud-name"
-CLOUDINARY_API_KEY = "your-api-key"
-CLOUDINARY_API_SECRET = "your-api-secret"
+CLOUDINARY_HIDDEN_CLOUD_NAME = "your-cloud-name"
+CLOUDINARY_HIDDEN_API_KEY = "your-api-key"
+CLOUDINARY_HIDDEN_API_SECRET = "your-api-secret"
 ```
 
 **Optional Airtable Configuration**:
 ```toml
-AIRTABLE_API_KEY = "your-token"
-AIRTABLE_BASE_ID = "your-base-id"
-AIRTABLE_TABLE_NAME = "BlackFriday"  # Defaults to "BlackFriday"
+AIRTABLE_HIDDEN_API_KEY = "your-token"
+AIRTABLE_HIDDEN_BASE_ID = "your-base-id"
+AIRTABLE_HIDDEN_TABLE_NAME = "BlackFriday"  # Defaults to "BlackFriday"
 ```
 
 ### Airtable Table Schema

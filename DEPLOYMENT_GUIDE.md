@@ -51,11 +51,11 @@ docker build -t blackfriday-capture .
 
 # Run the container
 docker run -p 8501:8501 \
-  -e CLOUDINARY_CLOUD_NAME=your_cloud \
-  -e CLOUDINARY_API_KEY=your_key \
-  -e CLOUDINARY_API_SECRET=your_secret \
-  -e AIRTABLE_API_KEY=your_token \
-  -e AIRTABLE_BASE_ID=your_base \
+  -e CLOUDINARY_HIDDEN_CLOUD_NAME=your_cloud \
+  -e CLOUDINARY_HIDDEN_API_KEY=your_key \
+  -e CLOUDINARY_HIDDEN_API_SECRET=your_secret \
+  -e AIRTABLE_HIDDEN_API_KEY=your_token \
+  -e AIRTABLE_HIDDEN_BASE_ID=your_base \
   -v $(pwd)/captures:/app/captures \
   blackfriday-capture
 ```
@@ -65,12 +65,12 @@ docker run -p 8501:8501 \
 ```bash
 # 1. Create .env file with your credentials
 cat > .env << 'EOF'
-CLOUDINARY_CLOUD_NAME=your_cloud
-CLOUDINARY_API_KEY=your_key
-CLOUDINARY_API_SECRET=your_secret
-AIRTABLE_API_KEY=your_token
-AIRTABLE_BASE_ID=your_base
-AIRTABLE_TABLE_NAME=BlackFriday
+CLOUDINARY_HIDDEN_CLOUD_NAME=your_cloud
+CLOUDINARY_HIDDEN_API_KEY=your_key
+CLOUDINARY_HIDDEN_API_SECRET=your_secret
+AIRTABLE_HIDDEN_API_KEY=your_token
+AIRTABLE_HIDDEN_BASE_ID=your_base
+AIRTABLE_HIDDEN_TABLE_NAME=BlackFriday
 EOF
 
 # 2. Start the service
@@ -98,11 +98,11 @@ docker-compose down
 
 2. **Create a `.streamlit/secrets.toml` file** (not in git):
    ```toml
-   CLOUDINARY_CLOUD_NAME = "your_cloud"
-   CLOUDINARY_API_KEY = "your_key"
-   CLOUDINARY_API_SECRET = "your_secret"
-   AIRTABLE_API_KEY = "your_token"
-   AIRTABLE_BASE_ID = "your_base"
+   CLOUDINARY_HIDDEN_CLOUD_NAME = "your_cloud"
+   CLOUDINARY_HIDDEN_API_KEY = "your_key"
+   CLOUDINARY_HIDDEN_API_SECRET = "your_secret"
+   AIRTABLE_HIDDEN_API_KEY = "your_token"
+   AIRTABLE_HIDDEN_BASE_ID = "your_base"
    ```
 
 3. **Deploy to Streamlit Cloud**:
@@ -152,11 +152,11 @@ docker-compose down
 
 5. **Set environment variables**:
    ```bash
-   heroku config:set CLOUDINARY_CLOUD_NAME=your_cloud
-   heroku config:set CLOUDINARY_API_KEY=your_key
-   heroku config:set CLOUDINARY_API_SECRET=your_secret
-   heroku config:set AIRTABLE_API_KEY=your_token
-   heroku config:set AIRTABLE_BASE_ID=your_base
+   heroku config:set CLOUDINARY_HIDDEN_CLOUD_NAME=your_cloud
+   heroku config:set CLOUDINARY_HIDDEN_API_KEY=your_key
+   heroku config:set CLOUDINARY_HIDDEN_API_SECRET=your_secret
+   heroku config:set AIRTABLE_HIDDEN_API_KEY=your_token
+   heroku config:set AIRTABLE_HIDDEN_BASE_ID=your_base
    ```
 
 ## AWS Deployment
@@ -187,11 +187,11 @@ This is a more complex setup. Consider using **AWS Fargate** (containerized) ins
    - Build: `docker build -t blackfriday .`
    - Start: `streamlit run app.py`
 3. **Add environment variables**:
-   - `CLOUDINARY_CLOUD_NAME`
-   - `CLOUDINARY_API_KEY`
-   - `CLOUDINARY_API_SECRET`
-   - `AIRTABLE_API_KEY`
-   - `AIRTABLE_BASE_ID`
+   - `CLOUDINARY_HIDDEN_CLOUD_NAME`
+   - `CLOUDINARY_HIDDEN_API_KEY`
+   - `CLOUDINARY_HIDDEN_API_SECRET`
+   - `AIRTABLE_HIDDEN_API_KEY`
+   - `AIRTABLE_HIDDEN_BASE_ID`
 
 ## Fly.io Deployment
 
@@ -205,11 +205,11 @@ This is a more complex setup. Consider using **AWS Fargate** (containerized) ins
 
 3. **Set secrets**:
    ```bash
-   fly secrets set CLOUDINARY_CLOUD_NAME=your_cloud
-   fly secrets set CLOUDINARY_API_KEY=your_key
-   fly secrets set CLOUDINARY_API_SECRET=your_secret
-   fly secrets set AIRTABLE_API_KEY=your_token
-   fly secrets set AIRTABLE_BASE_ID=your_base
+   fly secrets set CLOUDINARY_HIDDEN_CLOUD_NAME=your_cloud
+   fly secrets set CLOUDINARY_HIDDEN_API_KEY=your_key
+   fly secrets set CLOUDINARY_HIDDEN_API_SECRET=your_secret
+   fly secrets set AIRTABLE_HIDDEN_API_KEY=your_token
+   fly secrets set AIRTABLE_HIDDEN_BASE_ID=your_base
    ```
 
 4. **Deploy**:

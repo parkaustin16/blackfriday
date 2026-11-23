@@ -140,12 +140,12 @@ http://localhost:8501
 ### Enhanced with Cloud Features
 ```toml
 # .streamlit/secrets.toml
-CLOUDINARY_CLOUD_NAME = "..."
-CLOUDINARY_API_KEY = "..."
-CLOUDINARY_API_SECRET = "..."
-AIRTABLE_API_KEY = "..."
-AIRTABLE_BASE_ID = "..."
-AIRTABLE_TABLE_NAME = "BlackFriday"
+CLOUDINARY_HIDDEN_CLOUD_NAME = "..."
+CLOUDINARY_HIDDEN_API_KEY = "..."
+CLOUDINARY_HIDDEN_API_SECRET = "..."
+AIRTABLE_HIDDEN_API_KEY = "..."
+AIRTABLE_HIDDEN_BASE_ID = "..."
+AIRTABLE_HIDDEN_TABLE_NAME = "BlackFriday"
 ```
 
 ## Usage Workflow

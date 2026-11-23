@@ -307,9 +307,9 @@ def upload_to_cloudinary(file_path: str, subsidiary_code: str, mode: str) -> str
     """Upload screenshot to Cloudinary and return the secure URL, or None on failure."""
     import hashlib
 
-    cloud_name = _secret("CLOUDINARY_CLOUD_NAME")
-    api_key = _secret("CLOUDINARY_API_KEY")
-    api_secret = _secret("CLOUDINARY_API_SECRET")
+    cloud_name = _secret("CLOUDINARY_HIDDEN_CLOUD_NAME")
+    api_key = _secret("CLOUDINARY_HIDDEN_API_KEY")
+    api_secret = _secret("CLOUDINARY_HIDDEN_API_SECRET")
 
     if not all([cloud_name, api_key, api_secret]):
         return None
@@ -361,9 +361,9 @@ def save_to_airtable(
 
     Table columns: Name, domain, country, period, banner-type, capture
     """
-    api_key = _secret("AIRTABLE_API_KEY")
-    base_id = _secret("AIRTABLE_BASE_ID")
-    table_name = _secret("AIRTABLE_TABLE_NAME", "BlackFriday")
+    api_key = _secret("AIRTABLE_HIDDEN_API_KEY")
+    base_id = _secret("AIRTABLE_HIDDEN_BASE_ID")
+    table_name = _secret("AIRTABLE_HIDDEN_TABLE_NAME", "BlackFriday")
 
     if not all([api_key, base_id]):
         return None
@@ -727,7 +727,7 @@ def main() -> None:
         _h = struct.unpack(">I", _raw[20:24])[0]
         _mb = len(_raw) / 1024 / 1024
 
-        _airtable_configured = bool(_secret("AIRTABLE_API_KEY")) and bool(_secret("AIRTABLE_BASE_ID"))
+        _airtable_configured = bool(_secret("AIRTABLE_HIDDEN_API_KEY")) and bool(_secret("AIRTABLE_HIDDEN_BASE_ID"))
         st.markdown(
             """
             <style>
@@ -765,7 +765,7 @@ def main() -> None:
         st.image(output_path, use_container_width=True)
 
         # Upload options
-        if _secret("CLOUDINARY_CLOUD_NAME"):
+        if _secret("CLOUDINARY_HIDDEN_CLOUD_NAME"):
             if st.button("Upload to Cloudinary", type="secondary", use_container_width=True):
                 try:
                     with st.spinner("Uploading to Cloudinary..."):

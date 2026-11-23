@@ -165,14 +165,14 @@ Just run `setup.sh` and go!
 Create `.streamlit/secrets.toml`:
 ```toml
 # Cloudinary (image hosting)
-CLOUDINARY_CLOUD_NAME = "your-cloud"
-CLOUDINARY_API_KEY = "your-key"
-CLOUDINARY_API_SECRET = "your-secret"
+CLOUDINARY_HIDDEN_CLOUD_NAME = "your-cloud"
+CLOUDINARY_HIDDEN_API_KEY = "your-key"
+CLOUDINARY_HIDDEN_API_SECRET = "your-secret"
 
 # Airtable (metadata storage)
-AIRTABLE_API_KEY = "your-token"
-AIRTABLE_BASE_ID = "your-base"
-AIRTABLE_TABLE_NAME = "BlackFriday"
+AIRTABLE_HIDDEN_API_KEY = "your-token"
+AIRTABLE_HIDDEN_BASE_ID = "your-base"
+AIRTABLE_HIDDEN_TABLE_NAME = "BlackFriday"
 ```
 
 ## 🌍 Supported Regions
