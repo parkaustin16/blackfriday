@@ -756,46 +756,42 @@ def main() -> None:
         with col3:
             st.metric("Size", f"{_mb:.1f} MB")
 
-        with open(output_path, "rb") as _f:
-            st.download_button(
-                label="Download PNG",
-                data=_f.read(),
-                file_name=os.path.basename(output_path),
-                mime="image/png",
-            )
+        button_col1, button_col2 = st.columns(2)
+
+        with button_col1:
+            with open(output_path, "rb") as _f:
+                st.download_button(
+                    label="Download PNG",
+                    data=_f.read(),
+                    file_name=os.path.basename(output_path),
+                    mime="image/png",
+                    use_container_width=True,
+                )
+
+        with button_col2:
+            if _airtable_configured:
+                if st.button("Save to Airtable", type="secondary", use_container_width=True):
+                    try:
+                        with st.spinner("Uploading to Cloudinary and saving to Airtable..."):
+                            cloud_url = None
+                            if _secret("CLOUDINARY_HIDDEN_CLOUD_NAME"):
+                                cloud_url = upload_to_cloudinary(
+                                    output_path,
+                                    st.session_state.get("last_subsidiary_code"),
+                                    st.session_state.get("last_mode"),
+                                )
+                            record_id = save_to_airtable(
+                                st.session_state.get("last_subsidiary_code"),
+                                st.session_state.get("last_selected_label"),
+                                st.session_state.get("last_mode"),
+                                cloud_url,
+                            )
+                            st.session_state["airtable_status"] = f"Record ID: {record_id}"
+                            st.success(f"Saved to Airtable: {record_id}")
+                    except Exception as exc:
+                        st.error(f"Save failed: {exc}")
 
         st.image(output_path, use_container_width=True)
-
-        # Upload options
-        if _secret("CLOUDINARY_HIDDEN_CLOUD_NAME"):
-            if st.button("Upload to Cloudinary", type="secondary", use_container_width=True):
-                try:
-                    with st.spinner("Uploading to Cloudinary..."):
-                        cloud_url = upload_to_cloudinary(
-                            output_path,
-                            st.session_state.get("last_subsidiary_code"),
-                            st.session_state.get("last_mode"),
-                        )
-                        st.session_state["cloudinary_url"] = cloud_url
-                        st.success(f"Uploaded: {cloud_url}")
-                except Exception as exc:
-                    st.error(f"Upload failed: {exc}")
-
-        if _airtable_configured:
-            if st.button("Save to Airtable", type="secondary", use_container_width=True):
-                try:
-                    with st.spinner("Saving to Airtable..."):
-                        cloud_url = st.session_state.get("cloudinary_url")
-                        record_id = save_to_airtable(
-                            st.session_state.get("last_subsidiary_code"),
-                            st.session_state.get("last_selected_label"),
-                            st.session_state.get("last_mode"),
-                            cloud_url,
-                        )
-                        st.session_state["airtable_status"] = f"Record ID: {record_id}"
-                        st.success(f"Saved to Airtable: {record_id}")
-                except Exception as exc:
-                    st.error(f"Airtable save failed: {exc}")
 
 
 if __name__ == "__main__":
